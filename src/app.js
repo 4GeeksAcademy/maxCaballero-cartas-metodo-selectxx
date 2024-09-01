@@ -25,7 +25,6 @@ window.onload = function() {
 
     const listaPalo = ["corazon", "rombo", "espada", "trebol"];
 
-    // Selección de carta aleatoria
     let cartaRandom = Math.floor(Math.random() * listaCartas.length);
     let cartaMuestra = listaCartas[cartaRandom];
 
@@ -44,7 +43,7 @@ window.onload = function() {
           minIndex = j;
         }
       }
-      // Intercambiar el elemento mínimo encontrado con el primer elemento
+
       if (minIndex !== i) {
         [cartas[i], cartas[minIndex]] = [cartas[minIndex], cartas[i]];
       }
@@ -62,24 +61,20 @@ window.onload = function() {
 
     const cartasGeneradas = [];
     for (let i = 0; i < numeroCartas; i++) {
-      cartasGeneradas.push(barajar()); // Generar cartas aleatorias
+      cartasGeneradas.push(barajar());
     }
 
-    // Ordenar las cartas
     const cartasOrdenadas = ordenarCartas(cartasGeneradas);
 
     const resultado = document.getElementById("resultado");
-    resultado.innerHTML = ""; // Limpiar cartas anteriores
+    resultado.innerHTML = "";
 
-    // Mostrar cartas ordenadas
     cartasOrdenadas.forEach(({ carta, palo }) => {
       const cartaElemento = document.createElement("div");
       cartaElemento.className = "contenedor-carta";
 
-      // Establecemos el color de las cartas
       let color = palo === "corazon" || palo === "rombo" ? "red" : "black";
 
-      // Asignamos los símbolos de los palos
       let simbolo;
       switch (palo) {
         case "corazon":
@@ -96,14 +91,13 @@ window.onload = function() {
           break;
       }
 
-      // Asignamos el contenido de la carta
       cartaElemento.innerHTML = `  
           <h2 style="color: ${color};">${simbolo}</h2>  
           <h2 style="color: ${color};">${carta}</h2>  
           <h2 style="color: ${color};">${simbolo}</h2>  
         `;
 
-      resultado.appendChild(cartaElemento); // Agrega la carta al resultado
+      resultado.appendChild(cartaElemento); //
     });
   });
 };
